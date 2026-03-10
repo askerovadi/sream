@@ -19,7 +19,7 @@ class Student {
 
 public class Main {
 
-    public static void main(String[] args) {
+     static void main() {
         List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,5,4,4,2);
         List<String> names = Arrays.asList("Anna","Bek","Angela","Chyngyz","Alina");
 
@@ -35,14 +35,14 @@ public class Main {
         // 1
         List<Integer> even = numbers.stream()
                 .filter(n -> n % 2 == 0)
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println("Even numbers: " + even);
 
         // 2
         List<String> upper = names.stream()
-                .map(s -> s.toUpperCase())
-                .collect(Collectors.toList());
+                .map(String::toUpperCase)
+                .toList();
 
         System.out.println("Uppercase: " + upper);
 
@@ -56,7 +56,7 @@ public class Main {
         // 4
         List<Integer> sortedDesc = numbers.stream()
                 .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println("Sorted descending: " + sortedDesc);
 
@@ -77,13 +77,12 @@ public class Main {
         // 6
         List<Integer> unique = numbers.stream()
                 .distinct()
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println("Unique numbers: " + unique);
 
         // 7
-        String joined = names.stream()
-                .collect(Collectors.joining(", "));
+        String joined = String.join(", ", names);
 
         System.out.println("Joined string: " + joined);
 
@@ -107,7 +106,7 @@ public class Main {
         List<Student> top3 = students.stream()
                 .filter(s -> s.gpa > 3.5)
                 .limit(3)
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println("Top students: " + top3);
 
